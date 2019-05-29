@@ -1,0 +1,23 @@
+1. OK, i is not const
+    int i = 3;
+    i = 4;
+
+2. Not OK, j is const
+    const int j = 5;
+    j--;
+
+3. OK, myAge is ref to non-const int
+    int age = 18;
+    int& myAge = age;
+    myAge++;
+
+4. Not OK, myAge is const ref to non-const int
+    int age = 21;
+    const int& myAge = age;
+    myAge--;
+
+Extra:
+5. Not OK, cannot take mutable reference of const object
+    const int age = 22;
+    int& myAge = age;
+    myAge++;

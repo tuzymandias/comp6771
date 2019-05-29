@@ -1,19 +1,14 @@
-1.
-    int i = 3;
-    i = 4;
+#include <string>
+#include <iostream>
+int getAge(void); // declaration
 
-2.
-    const int j = 5;
-    j--;
+int main(void) { // definition
+  std::string name; // definition
+  name = "Hayden"; // assignment
+  std::cout << name << " is " << getAge() << "\n";
+  return 0;
+}
 
-3.
-    int age = 18;
-    int& myAge = age;
-    myAge++;
-
-4.
-    int age = 21;
-    const int& myAge = age;
-    myAge--;
-
-
+int getAge(void) { // definition
+  return 24;
+}
