@@ -1,0 +1,3 @@
+const_iterator is not the same as const iterator
+const_iterator is an iterator with a read-only element (input but not output iterator)
+const iterator just means that the iterator itself is const, e.g. it++ will fail, element may be mutable.

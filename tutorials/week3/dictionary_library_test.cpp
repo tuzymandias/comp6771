@@ -20,10 +20,16 @@ TEST_CASE("Empty word list means nothing is valid") {
 
 TEST_CASE("One word means only that word is valid") {
   REQUIRE(GetValidWords({"hello"}, "").empty());
+  REQUIRE(!GetValidWords({"hello"}, "hello").empty());
+  REQUIRE(GetValidWords({"hello"}, "HELLO").empty());
+  REQUIRE(GetValidWords({"hello"}, "world").empty());
   // TODO(tutorial): Add more tests here
 }
 
 TEST_CASE("Multiple words means they are all valid") {
   REQUIRE(GetValidWords({"hello", "world"}, "").empty());
-  // TODO(tutorial): Add more tests here
+  REQUIRE(!GetValidWords({"hello", "world"}, "hello world").empty());
+  REQUIRE(GetValidWords({"hello", "world"}, "hello world") == "hello world ");
+  REQUIRE(GetValidWords({"hello", "world"}, "hello my world") == "hello world ");
+// TODO(tutorial): Add more tests here
 }

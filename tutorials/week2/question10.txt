@@ -1,0 +1,9 @@
+Q. What is the relationship between containers, iterators, and algorithms?
+Why is this relationship so important, and how does it help us as programmers?
+How does this relate to the DRY (don't repeat yourself) principle?
+
+A. Container stores elements. Iterators 'delivers' the elements one by one to the algorithms.
+Details on how the elements are stored is abstracted away from the algorithm.
+This allow programmers to write generic algorithms that works with a variety of containers.
+Some algorithms however, require a specific iterator type to work properly. For example, binary sort
+will only retain its O(logn) complexity if the iterator satisfies the random access iterator trait.

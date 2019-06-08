@@ -3,16 +3,16 @@ std::list<int> li;
 std::forward_list<double> forward_li;
 std::string s;
 
-vec.begin();
-vec.cbegin();
-(*vec.begin())++;
-li.cbegin();
-li.rbegin();
-forward_li.cbegin();
-(*forward_li.cbegin())++;
-forward_li.crbegin();
-s.begin();
-std::back_inserter(vec);
-std::back_inserter(li);
-std::istream_iterator<int>(std::cin);
-std::ostream_iterator<int>(std::cout, " ");
+vec.begin(); // std::vector<int>::const_iterator (satisfies input, forward, bidirectional and random access)
+vec.cbegin(); // same as above
+(*vec.begin())++; // fails to compile, vector not mutable
+li.cbegin(); // std::list<int>::const_iterator (satisfies input, forward, and bidirectional)
+li.rbegin(); // same as above (prefer const overload unless needed)
+forward_li.cbegin(); // std::forward_list<double>::const_iterator (satisfies input and forward)
+(*forward_li.cbegin())++; // doesn't compile, const_iterator, element not mutable
+forward_li.crbegin(); // no such thing
+s.begin(); // std::string::iterator (satisfies input, output, forward, bidirectional and random access)
+std::back_inserter(vec); // output iterator that is not mutable, a.k.a input iterator
+std::back_inserter(li); // output iterator
+std::istream_iterator<int>(std::cin); // input iterator
+std::ostream_iterator<int>(std::cout, " "); // output iterator

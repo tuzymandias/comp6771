@@ -1,0 +1,14 @@
+1. Input iterator
+  - read access for the pointed to element
+  - dereference (operator* or operator->) to access element
+  - can advance in forward direction (operator++, e.g. it++)
+2. Output iterator
+  - write access for the pointed to element
+3. Forward iterator
+  - has to satisfy input iterator. if mutable, has to also satisfy output iterator
+  - allows multiple passes (multiple passes through a list)
+4. Bidirectional iterator
+  - has to satisfy forward iterator. if mutable, has to also satisfy output iterator
+  - can go backwards (it--)
+5. Random-access iterator
+  - can be moved to point to any element in constant time (it + num, it - num is constant)

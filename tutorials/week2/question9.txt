@@ -14,6 +14,9 @@ int main() {
   m.emplace("cat", 10.157);
 
   // This is very dangerous, and one of the most common causes of mistakes in C++.
+  // [Nicholas]: if "bat" is not found, the map will implicitly create that key.
+  //             this is so you can just do something like m["bat"] = 20.5; and skip the emplace call
+  //             convenient, but also allows this to happen
   std::cout << m["bat"] << '\n';
 
   auto it = m.find("bat"); // Iterator to bat if present, otherwise m.end()
