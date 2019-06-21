@@ -1,0 +1,5 @@
+ When writing a lambda function, when would you capture by value, and when would you capture by reference?
+
+ You want to capture by value when copying is cheap.
+ Capture by reference when copying is expensive, or when you want to modify the value, or if the captured
+ variable is a shared resource (in a threading context).

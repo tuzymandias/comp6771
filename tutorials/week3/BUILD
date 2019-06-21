@@ -35,3 +35,9 @@ cc_test(
         "//:catch",
     ],
 )
+
+cc_binary(
+    name = "sort_strings_by_length",
+    srcs = ["sort_strings_by_length.cpp"],
+    deps = [],
+)

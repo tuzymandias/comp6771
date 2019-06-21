@@ -6,6 +6,9 @@
 #include <sstream>
 
 // TODO(tutors): Discuss how the use of istream instead of ifstream improves ease of testing.
+// istream is the base class of a lot of stream classes, using it ensures that your code is compatible
+// those classes. This is important for testing as now we can pass in a pre-constructed istringstream here.
+// e.g. you don't have to prompt user input during testing and just use pre-defined strings.
 std::vector<std::string> ToWordList(std::istream& input) {
   std::vector<std::string> word_list;
 
