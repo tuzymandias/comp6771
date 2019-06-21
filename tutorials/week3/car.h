@@ -10,6 +10,12 @@ class Car {
   Car(const std::string& manufacturer, int num_seats);
   Car();
 
+  Car(const Car&);
+  Car(Car&&);
+
+  Car& operator=(const Car&) = default;
+  Car& operator=(Car&&) = default;
+
   ~Car();
 
   // return a const reference here to keep it const-correct and save a copy.

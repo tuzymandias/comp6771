@@ -9,6 +9,12 @@ Car::Car(const std::string& manufacturer, int num_seats)
 
 Car::Car() : Car{"unknown", 4} {}
 
+Car::Car(const Car& source)
+  : Car{ source.getManufacturer(), source.getNumSeats() } {}
+
+Car::Car(Car&& source)
+  : Car{ std::move(source.manufacturer_), source.num_seats_ } {}
+
 Car::~Car() {
   --object_count_;
 }
