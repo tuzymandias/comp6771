@@ -14,6 +14,15 @@ int& Point::operator[](int i) {
   }
 }
 
+const int& Point::operator[](int i) const {
+  assert(i == 0 || i == 1);
+  if (i == 0) {
+    return this->x_;
+  } else {
+    return this->y_;
+  }
+}
+
 std::ostream& operator<<(std::ostream& os, const Point& p) {
   os << "(" << p.x_ << "," << p.y_ << ")";
   return os;
