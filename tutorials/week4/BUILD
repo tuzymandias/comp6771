@@ -12,3 +12,18 @@ cc_binary(
         ":book",
     ],
 )
+
+cc_library(
+    name = "point",
+    srcs = ["point.cpp"],
+    hdrs = ["point.h"],
+    deps = [],
+)
+
+cc_binary(
+    name = "point_main",
+    srcs = ["point_main.cpp"],
+    deps = [
+        ":point",
+    ],
+)
