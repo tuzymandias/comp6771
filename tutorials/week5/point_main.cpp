@@ -9,4 +9,7 @@ int main() {
 
   const Point p{99, -5};
   std::cout << p[0] << "\n";
+
+  double distance = Point{ 3, 4 };
+  std::cout << distance << "\n";
 }

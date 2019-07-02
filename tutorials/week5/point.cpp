@@ -2,6 +2,7 @@
 #include <istream>
 #include <iostream>
 #include <cassert>
+#include <cmath>
 
 #include "tutorials/week5/point.h"
 
@@ -21,6 +22,10 @@ const int& Point::operator[](int i) const {
   } else {
     return this->y_;
   }
+}
+
+Point::operator double() const {
+  return std::hypot(x_, y_);
 }
 
 std::ostream& operator<<(std::ostream& os, const Point& p) {

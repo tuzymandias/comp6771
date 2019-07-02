@@ -12,6 +12,8 @@ class Point {
   int& operator[](int i);
   const int& operator[](int i) const;
 
+  operator double() const;
+
   friend std::ostream& operator<<(std::ostream& os, const Point& type);
   friend std::istream& operator>>(std::istream& is, Point& type);
 
