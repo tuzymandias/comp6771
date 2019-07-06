@@ -7,7 +7,7 @@
 class Point {
  public:
   Point() : Point{ 0, 0 } {};
-  Point(int x, int y) : x_{x}, y_{y} {};
+  Point(int x, int y) : explicit_coordinates_{x, y} {};
 
   int& operator[](int i);
   const int& operator[](int i) const;
@@ -18,8 +18,19 @@ class Point {
   friend std::istream& operator>>(std::istream& is, Point& type);
 
  private:
-  int x_;
-  int y_;
+  // Stores explicit x and y coordinates
+  struct Coordinates {
+    int x;
+    int y;
+  };
+
+  // Union of a size 2 int array and 2 int struct
+  // Layout of array and struct is guaranteed to be the same.
+  // This lets you just subscript the coordinates
+  union {
+    int         coordinates_[2];
+    Coordinates explicit_coordinates_;
+  };
 };
 
 #endif
