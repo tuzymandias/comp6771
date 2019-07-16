@@ -5,41 +5,44 @@
 #include <memory>
 #include <iterator>
 
-template <typename T, std::size_t Size>
+template <typename T, int Size>
 class GenericQueue {
+  static constexpr int TRUE_SIZE = Size + 1;
+
  public:
-  GenericQueue() : size_curr_{0}, queue_{ } {};
+  GenericQueue() : head_{0}, tail_{0}, queue_{ } {};
   
   void enque(T s);
   T deque();
   int size() const;
 
  private:
-  int size_curr_;
-  std::array<T, Size> queue_;
+  int head_;
+  int tail_;
+  std::array<T, TRUE_SIZE> queue_;
 };
 
-template <typename T, std::size_t Size>
+template <typename T, int Size>
 void GenericQueue<T, Size>::enque(T s) {
-  if(size_curr_ >= static_cast<int>(Size)) {
+  if((head_ + 1) % TRUE_SIZE == tail_) {
     throw std::runtime_error("queue is full");
   }
-  queue_[size_curr_++] = s;
+  queue_[head_++] = s;
 }
 
-template <typename T, std::size_t Size>
+template <typename T, int Size>
 T GenericQueue<T, Size>::deque() {
-  T ret_str = queue_[0];
-  auto from = std::next(queue_.begin());
-  auto to   = std::end(queue_);
-  std::move(from, to, queue_.begin());
-  --size_curr_;
+  T ret_str = queue_[tail_++];
   return ret_str;
 }
 
-template <typename T, std::size_t Size>
+template <typename T, int Size>
 int GenericQueue<T, Size>::size() const {
-  return size_curr_;
+  if (head_ < tail_) {
+    return TRUE_SIZE + tail_ - head_;
+  } else {
+    return head_ - tail_;
+  }
 }
 
 #endif  // STRINGQUEUE_H_
