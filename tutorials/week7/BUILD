@@ -30,3 +30,16 @@ cc_binary(
         ":string_queue_lib",
     ],
 )
+
+cc_library(
+    name = "generic_queue_lib",
+    hdrs = ["generic_queue.h"],
+)
+
+cc_binary(
+    name = "generic_queue",
+    srcs = ["generic_queue_user.cpp"],
+    deps = [
+        ":generic_queue_lib",
+    ],
+)
