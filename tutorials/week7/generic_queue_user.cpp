@@ -4,7 +4,7 @@
 #include "tutorials/week7/generic_queue.h"
 
 int main() {
-  GenericQueue<int> my_queue{ 5 };
+  GenericQueue<int, 5> my_queue{ };
   std::vector<int>  integers{ 6, 9, 69, 1337, 9001 };
   std::vector<int>  repeated_integers{ };
 
