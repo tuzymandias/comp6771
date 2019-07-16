@@ -1,0 +1,33 @@
+cc_binary(
+    name = "template_instantiation",
+    srcs = ["template_instantiation.cpp"],
+    deps = [],
+)
+
+cc_library(
+    name = "stack_lib",
+    srcs = ["stack.cpp"],
+    hdrs = ["stack.h"],
+    deps = [],
+)
+
+cc_binary(
+    name = "stack",
+    srcs = ["stack_main.cpp"],
+    deps = [
+        ":stack_lib",
+    ],
+)
+
+cc_library(
+    name = "string_queue_lib",
+    hdrs = ["string_queue.h"],
+)
+
+cc_binary(
+    name = "string_queue",
+    srcs = ["string_queue_user.cpp"],
+    deps = [
+        ":string_queue_lib",
+    ],
+)
