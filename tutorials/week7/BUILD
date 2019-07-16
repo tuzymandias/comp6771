@@ -6,7 +6,6 @@ cc_binary(
 
 cc_library(
     name = "stack_lib",
-    srcs = ["stack.cpp"],
     hdrs = ["stack.h"],
     deps = [],
 )
