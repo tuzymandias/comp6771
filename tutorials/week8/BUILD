@@ -17,3 +17,8 @@ cc_binary(
     name = "iterator_invalidation",
     srcs = ["iterator_invalidation.cpp"],
 )
+
+cc_binary(
+    name = "silly_set",
+    srcs = ["silly_set.cpp"],
+)
