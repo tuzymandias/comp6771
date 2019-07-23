@@ -6,17 +6,32 @@
 #include <vector>
 
 class Rope {
+  using storage                      = std::vector<std::string>;
+
  public:
   explicit Rope(std::vector<std::string> rope): rope_{std::move(rope)} {}
 
   class iterator {
    public:
-    // TODO(tutorial): fill this in.
-    using iterator_category = ?;
-    using value_type = ?;
-    using reference = ?;
-    using pointer = ?;
-    using difference_type = int;
+    using outer_iterator    = typename storage::iterator;
+    using inner_iterator    = typename outer_iterator::value_type::iterator;
+    using value_type        = typename inner_iterator::value_type;
+    using reference         = std::add_lvalue_reference_t<value_type>;
+    using pointer           = std::add_pointer_t<value_type>;
+    using iterator_category = std::bidirectional_iterator_tag;
+    using difference_type   = int;
+
+    iterator(outer_iterator it, outer_iterator end)
+      : outer_it_ { it  }
+      , outer_end_{ end }
+      , inner_it_ { it->begin() }
+    {}
+
+    iterator(outer_iterator end)
+      : outer_it_ { end }
+      , outer_end_{ end }
+      , inner_it_ {}
+    {}
 
     reference operator*() const;
     iterator& operator++();
@@ -28,15 +43,25 @@ class Rope {
     // This one isn't strictly required, but it's nice to have.
     pointer operator->() const { return &(operator*()); }
 
-    friend bool operator==(const iterator& lhs, const iterator& rhs);
+    friend bool operator==(const iterator& lhs, const iterator& rhs) {
+      return lhs.outer_it_ == rhs.outer_it_ &&
+             lhs.inner_it_ == rhs.inner_it_;
+    };
     friend bool operator!=(const iterator& lhs, const iterator& rhs) { return !(lhs == rhs); }
 
    private:
-    // TODO(tutorial): What data members should we put here?
+    void advance();
+
+    outer_iterator outer_it_;
+    outer_iterator outer_end_;
+    inner_iterator inner_it_;
   };
 
+  iterator begin();
+  iterator end();
+
  private:
-  std::vector<std::string> rope_;
+  storage rope_;
 };
 
 

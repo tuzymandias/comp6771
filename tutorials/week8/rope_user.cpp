@@ -10,7 +10,8 @@ int main() {
       Rope{{"abc", "def"}},
       Rope{{"abc", "", "def"}},
       Rope{{""}},
-      Rope{{"", "abc", "def", ""}}
+      Rope{{"", "abc", "def", ""}},
+      Rope{{}}
   };
 
   // TODO(tutorial): make this support const auto& rope, if you have time.
