@@ -12,3 +12,8 @@ cc_library(
     hdrs = ["rope.h"],
     deps = [],
 )
+
+cc_binary(
+    name = "iterator_invalidation",
+    srcs = ["iterator_invalidation.cpp"],
+)
